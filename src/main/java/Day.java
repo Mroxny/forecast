@@ -1,4 +1,5 @@
 public class Day{
+    private String date;
     private float minTemp;
     private float maxTemp;
     private float avgTemp;
@@ -34,5 +35,13 @@ public class Day{
 
     public void setProbOfPerc(float probOfPerc) {
         this.probOfPerc = probOfPerc;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
