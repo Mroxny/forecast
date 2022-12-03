@@ -1,4 +1,3 @@
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -19,11 +18,11 @@ public class APIManager {
     private double lat;
     private double lon;
     private String units;
-    private String type;
+    private String[] type;
     private String[] typesToExclude = {"current","minutely","hourly","daily","alerts"};
 
 
-    public APIManager(String key,double lat, double lon, String type) {
+    public APIManager(String key,double lat, double lon, String ... type) {
         this.key = key;
         this.lat = lat;
         this.lon = lon;
@@ -49,7 +48,9 @@ public class APIManager {
 
     public String getExcluded(){
         List<String> list = new ArrayList<String>(Arrays.asList(typesToExclude));
-        list.remove(type);
+        for(String t : type){
+            list.remove(t);
+        }
         typesToExclude = list.toArray(new String[0]);
 
         return "exclude="+String.join(",",typesToExclude);
@@ -116,7 +117,7 @@ public class APIManager {
         this.units = units;
     }
 
-    public void setType(String type) {
+    public void setType(String ... type) {
         this.type = type;
     }
 
