@@ -3,7 +3,7 @@ public class Day{
     private float minTemp;
     private float maxTemp;
     private float avgTemp;
-    private float probOfPerc;
+    private float probOfPrec;
 
     public float getMinTemp() {
         return minTemp;
@@ -29,12 +29,12 @@ public class Day{
         this.avgTemp = avgTemp;
     }
 
-    public float getProbOfPerc() {
-        return probOfPerc;
+    public float getProbOfPrec() {
+        return probOfPrec;
     }
 
-    public void setProbOfPerc(float probOfPerc) {
-        this.probOfPerc = probOfPerc;
+    public void setProbOfPrec(float probOfPerc) {
+        this.probOfPrec = probOfPerc;
     }
 
     public String getDate() {
