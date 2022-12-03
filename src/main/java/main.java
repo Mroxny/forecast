@@ -2,7 +2,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Main {
-    public static void main(String[] args) {
+    public static <T> void main(String[] args) {
         System.out.println("You have "+args.length+" arguments");
 
 
@@ -10,12 +10,13 @@ public class Main {
         String response = apiManager.getResponse();
         JSONObject mainObject = apiManager.getJSONFromString(response);
 
-        JSONArray testArray = (JSONArray) mainObject.get("daily");
 
-            for(Object o: testArray){
-                JSONObject testObj = (JSONObject) o;
-                System.out.println(testObj.get("temp"));
-            }
+
+        ForecastParser fp = new ForecastParser(mainObject, "daily");
+        for (Object r:fp.getForecast()){
+            System.out.println(r.toString());
+        }
+
 
     }
 
