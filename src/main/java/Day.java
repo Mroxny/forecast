@@ -5,6 +5,14 @@ public class Day{
     private float avgTemp;
     private float probOfPrec;
 
+    public Day(String date, float minTemp, float maxTemp, float avgTemp, float probOfPrec) {
+        this.date = date;
+        this.minTemp = minTemp;
+        this.maxTemp = maxTemp;
+        this.avgTemp = avgTemp;
+        this.probOfPrec = probOfPrec;
+    }
+
     public float getMinTemp() {
         return minTemp;
     }
@@ -43,5 +51,10 @@ public class Day{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return date+", "+minTemp+", "+maxTemp+", "+avgTemp+", "+probOfPrec;
     }
 }
