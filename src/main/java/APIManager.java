@@ -119,4 +119,15 @@ public class APIManager {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "APIManager{" +
+                "key='" + key + '\'' +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", units='" + units + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
