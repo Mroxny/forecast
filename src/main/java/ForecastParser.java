@@ -1,6 +1,7 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class ForecastParser {
 
     }
 
-    public <T> List<T> getForecast(){
+    public <T> List<T> printForecast(){
         switch (fType){
             case TYPE_DAILY:
                 return (List<T>) getForecastDaily();
@@ -62,9 +63,21 @@ public class ForecastParser {
             JSONObject object = (JSONObject) o;
             JSONObject temp = (JSONObject) object.get("temp");
 
-            System.out.println(temp.get("min"));
+            System.out.println(temp);
 
+            String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy");
+            double min = (double) temp.get("min");
+            double max = (double) temp.get("max");
 
+            double morn = (double) temp.get("morn");
+            double day = (double) temp.get("day");
+            double eve = (double) temp.get("eve");
+            double night = (double) temp.get("night");
+            double avg = (morn + day + eve + night) / 4;
+
+            double pop = (double) object.get("pop");
+
+            list.add(new Day(date, (float)min, (float)max, (float)avg, (float)pop));
         }
 
 
@@ -75,6 +88,13 @@ public class ForecastParser {
         List<Hour> list = new ArrayList<Hour>();
 
         return list;
+    }
+
+    public static String parseDate(long timeStamp, String pattern){
+        java.util.Date date = new java.util.Date((long)timeStamp*1000);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        return simpleDateFormat.format(date);
     }
 
 }

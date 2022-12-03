@@ -13,9 +13,8 @@ public class Main {
 
 
         ForecastParser fp = new ForecastParser(mainObject, "daily");
-        for (Object r:fp.getForecast()){
-            System.out.println(r.toString());
-        }
+
+        fp.getForecastDaily();
 
 
     }
