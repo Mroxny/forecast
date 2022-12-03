@@ -3,6 +3,12 @@ public class Hour {
     private float temp;
     private float precipitation;
 
+    public Hour(String date, float temp, float precipitation) {
+        this.date = date;
+        this.temp = temp;
+        this.precipitation = precipitation;
+    }
+
 
     public String getDate() {
         return date;
