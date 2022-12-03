@@ -84,7 +84,18 @@ public class ForecastParser {
 
     public List<Hour> getForecastHourly(){
         List<Hour> list = new ArrayList<Hour>();
+        JSONArray jArray = (JSONArray) jObject.get("hourly");
 
+        for(Object o: jArray){
+            JSONObject object = (JSONObject) o;
+
+            String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy HH:mm");
+            System.out.println(date);
+
+//            Number min = (Number) temp.get("min");
+
+            list.add(new Hour());
+        }
         return list;
     }
 

@@ -6,13 +6,13 @@ public class Main {
         System.out.println("You have "+args.length+" arguments");
 
 
-        APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e",33.44, 94.04, "daily");
+        APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e",33.44, 94.04, "hourly");
         String response = apiManager.getResponse();
         JSONObject mainObject = apiManager.getJSONFromString(response);
 
 
 
-        ForecastParser fp = new ForecastParser(mainObject, "daily");
+        ForecastParser fp = new ForecastParser(mainObject, "hourly");
         fp.printForecast();
 
 
