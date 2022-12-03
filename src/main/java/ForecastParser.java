@@ -79,8 +79,6 @@ public class ForecastParser {
 
             list.add(new Day(date, (float)min, (float)max, (float)avg, (float)pop));
         }
-
-
         return list;
     }
 
