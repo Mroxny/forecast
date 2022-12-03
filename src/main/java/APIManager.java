@@ -20,6 +20,7 @@ public class APIManager {
     private double lon;
     private String units;
     private String type;
+    private String[] typesToExclude = {"current","minutely","hourly","daily","alerts"};
 
 
     public APIManager(String key,double lat, double lon, String type) {
@@ -47,7 +48,6 @@ public class APIManager {
     }
 
     public String getExcluded(){
-        String[] typesToExclude = {"current","minutely","hourly","daily","alerts"};
         List<String> list = new ArrayList<String>(Arrays.asList(typesToExclude));
         list.remove(type);
         typesToExclude = list.toArray(new String[0]);
@@ -68,7 +68,6 @@ public class APIManager {
             return null;
         }
     }
-
 
     public String getResponse(){
         String apiRequest = URL_PREFIX+String.join("&",getLat(), getLon(), getExcluded(), getUnits(), getKey());
