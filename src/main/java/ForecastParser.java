@@ -62,17 +62,19 @@ public class ForecastParser {
             JSONObject object = (JSONObject) o;
             JSONObject temp = (JSONObject) object.get("temp");
 
-            
+            System.out.println(temp.get("min"));
 
 
         }
 
 
-        return list
+        return list;
     }
 
     public List<Hour> getForecastHourly(){
+        List<Hour> list = new ArrayList<Hour>();
 
+        return list;
     }
 
 }
