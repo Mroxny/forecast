@@ -13,8 +13,7 @@ public class Main {
 
 
         ForecastParser fp = new ForecastParser(mainObject, "daily");
-
-        fp.getForecastDaily();
+        fp.printForecast();
 
 
     }

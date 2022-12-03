@@ -40,18 +40,17 @@ public class ForecastParser {
 
     }
 
-    public <T> List<T> printForecast(){
+    public void printForecast(){
         switch (fType){
             case TYPE_DAILY:
-                return (List<T>) getForecastDaily();
+                for(Day d: getForecastDaily()) System.out.println(d);
+                break;
 
             case TYPE_HOURLY:
-                return (List<T>) getForecastHourly();
-
+                for(Hour h: getForecastHourly()) System.out.println(h);
+                break;
             default:
                 Main.printError("Unknown forecast type");
-                return null;
-
         }
     }
 
@@ -63,21 +62,22 @@ public class ForecastParser {
             JSONObject object = (JSONObject) o;
             JSONObject temp = (JSONObject) object.get("temp");
 
-            System.out.println(temp);
-
             String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy");
-            double min = (double) temp.get("min");
-            double max = (double) temp.get("max");
 
-            double morn = (double) temp.get("morn");
-            double day = (double) temp.get("day");
-            double eve = (double) temp.get("eve");
-            double night = (double) temp.get("night");
-            double avg = (morn + day + eve + night) / 4;
+            Number min = (Number) temp.get("min");
+            Number max = (Number)temp.get("max");
 
-            double pop = (double) object.get("pop");
+            Number morn = (Number) temp.get("morn");
+            Number day = (Number) temp.get("day");
+            Number eve = (Number) temp.get("eve");
+            Number night = (Number) temp.get("night");
+            float avg = (morn.floatValue() + day.floatValue() + eve.floatValue() + night.floatValue()) / 4;
 
-            list.add(new Day(date, (float)min, (float)max, (float)avg, (float)pop));
+            Number pop = (Number) object.get("pop");
+            pop= pop.floatValue() * 100;
+            System.out.println(object);
+
+            list.add(new Day(date, min.floatValue(), max.floatValue(), avg, pop.floatValue()));
         }
         return list;
     }
