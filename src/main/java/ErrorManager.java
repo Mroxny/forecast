@@ -13,7 +13,7 @@ public class ErrorManager {
             Main.printError("Too many arguments");
             return true;
         }
-        else if(args[0].length() < 4){
+        else if(args.length < 4){
             Main.printError("Not enough arguments");
             return true;
         }
