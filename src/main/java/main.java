@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 public class Main {
     public static <T> void main(String[] args) {
 
+        System.out.println(        "6f93c4561bab03891bf74e695a24ac4c".length()
+        );
 
         APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e",33.44, 94.04, "hourly");
         String response = apiManager.getResponse();
