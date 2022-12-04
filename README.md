@@ -13,7 +13,7 @@ Installation
 ----
 
 * Install [Java JDK](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html) and add it to PATH in environmental variables
-* Download .jar file from [here]()
+* Download .zip file from [here](https://github.com/Mroxny/forecast/releases)
 * Open CMD and type `java -jar forecast.jar arg1 arg2 etc...`
 * Enjoy!
 
