@@ -24,8 +24,8 @@ public class ErrorManager {
             Main.printError("Incorrect forecast type value");
             return true;
         }
-        else if(args[3].length() != 32){
-            Main.printError("Incorrect API Key length");
+        else if(!ConfigReader.containsCity(args[1], args[3])){
+            Main.printError("Cannot find that city in config file");
             return true;
         }
         else return false;
