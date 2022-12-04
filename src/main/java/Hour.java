@@ -33,4 +33,9 @@ public class Hour {
     public void setPrecipitation(float precipitation) {
         this.precipitation = precipitation;
     }
+
+    @Override
+    public String toString() {
+        return date+", "+temp+", "+precipitation;
+    }
 }

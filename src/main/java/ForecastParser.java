@@ -89,7 +89,7 @@ public class ForecastParser {
         for(Object o: jArray){
             JSONObject object = (JSONObject) o;
             String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy HH:mm");
-            
+
            Number temp = (Number) object.get("temp");
            Number pop = (Number) object.get("pop");
            pop= pop.floatValue() * 100;
