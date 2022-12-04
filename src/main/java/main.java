@@ -4,21 +4,26 @@ import org.json.simple.JSONObject;
 public class Main {
     public static <T> void main(String[] args) {
 
-//        if(ErrorManager.haveErrors(args)) return;
+        if(ErrorManager.haveErrors(args)) return;
 
-        ConfigReader cReader = new ConfigReader("config.txt");
-        City city = cReader.getCityByName(cReader.getCities(),"Warsaw");
+        ConfigReader cReader = new ConfigReader(args[1]);
+        City city = cReader.getCityByName(cReader.getCities(),args[3]);
         if(city == null){
             printError("Cannot find that city in config file");
             return;
         }
 
-        APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e", city.getLat(), city.getLon(), "hourly");
+        System.out.println(args);
+
+        APIManager apiManager = new APIManager(args[0], city.getLat(), city.getLon(), args[2]);
         String response = apiManager.getResponse();
         JSONObject mainObject = APIManager.getJSONFromString(response);
 
-
-
+        if(mainObject.containsKey("cod")){
+            printError("Invalid API response");
+            return;
+        }
+        
         ForecastParser fp = new ForecastParser(mainObject, "hourly");
         fp.printForecast();
 

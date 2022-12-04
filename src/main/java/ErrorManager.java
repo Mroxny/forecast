@@ -20,7 +20,7 @@ public class ErrorManager {
             Main.printError("Invalid path to config file");
             return true;
         }
-        else if(args[2].equalsIgnoreCase("daily") || args[2].equalsIgnoreCase("hourly") ){
+        else if(!args[2].equalsIgnoreCase("daily") && !args[2].equalsIgnoreCase("hourly") ){
             Main.printError("Incorrect forecast type value");
             return true;
         }
