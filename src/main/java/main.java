@@ -5,8 +5,15 @@ public class Main {
     public static <T> void main(String[] args) {
 
 //        if(ErrorManager.haveErrors(args)) return;
-        
-        APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e",33.44, 94.04, "hourly");
+
+        ConfigReader cReader = new ConfigReader("config.txt");
+        City city = cReader.getCityByName(cReader.getCities(),"Warsaw");
+        if(city == null){
+            printError("Cannot find that city in config file");
+            return;
+        }
+
+        APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e", city.getLat(), city.getLon(), "hourly");
         String response = apiManager.getResponse();
         JSONObject mainObject = APIManager.getJSONFromString(response);
 

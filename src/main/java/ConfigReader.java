@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class ConfigReader {
@@ -37,8 +36,8 @@ public class ConfigReader {
         }
     }
 
-    public Optional<City> getCityByName(List<City> list, String name){
-        return list.stream().filter(o -> o.getName().equals(name)).findFirst();
+    public City getCityByName(List<City> list, String name){
+        return list.stream().filter(o -> o.getName().equals(name)).findFirst().orElse(null);
     }
 
     public static boolean containsCity(String path, String cityName) {
