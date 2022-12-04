@@ -75,7 +75,6 @@ public class ForecastParser {
 
             Number pop = (Number) object.get("pop");
             pop= pop.floatValue() * 100;
-            System.out.println(object);
 
             list.add(new Day(date, min.floatValue(), max.floatValue(), avg, pop.floatValue()));
         }

@@ -13,18 +13,19 @@ public class Main {
             return;
         }
 
-        System.out.println(args);
 
         APIManager apiManager = new APIManager(args[0], city.getLat(), city.getLon(), args[2]);
         String response = apiManager.getResponse();
+        if(response == null) return;
+
         JSONObject mainObject = APIManager.getJSONFromString(response);
 
         if(mainObject.containsKey("cod")){
-            printError("Invalid API response");
+            printError("API response code "+ mainObject.get("cod"));
             return;
         }
-        
-        ForecastParser fp = new ForecastParser(mainObject, "hourly");
+
+        ForecastParser fp = new ForecastParser(mainObject, args[2]);
         fp.printForecast();
 
 
