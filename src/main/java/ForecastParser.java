@@ -88,13 +88,13 @@ public class ForecastParser {
 
         for(Object o: jArray){
             JSONObject object = (JSONObject) o;
-
             String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy HH:mm");
-            System.out.println(date);
+            
+           Number temp = (Number) object.get("temp");
+           Number pop = (Number) object.get("pop");
+           pop= pop.floatValue() * 100;
 
-//            Number min = (Number) temp.get("min");
-
-            list.add(new Hour());
+           list.add(new Hour(date, temp.floatValue(), pop.floatValue()));
         }
         return list;
     }
