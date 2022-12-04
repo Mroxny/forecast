@@ -46,6 +46,9 @@ public class APIManager {
         return "units="+units;
     }
 
+    /**
+     * @return Returns a string of types to exclude omitting the given types
+     */
     public String getExcluded(){
         List<String> list = new ArrayList<String>(Arrays.asList(typesToExclude));
         for(String t : type){
@@ -56,11 +59,15 @@ public class APIManager {
         return "exclude="+String.join(",",typesToExclude);
     }
 
+    /**
+     * Creates a JSON object from the provided API response
+     * @param data API response
+     * @return Returns a JSON Object if possible, null when the given data is invalid
+     */
     public static JSONObject getJSONFromString(String data){
         try{
             JSONParser parser = new JSONParser();
             Object parsedObject = parser.parse(data);
-
 
             return (JSONObject) parsedObject;
         }
@@ -70,6 +77,10 @@ public class APIManager {
         }
     }
 
+    /**
+     * Connects to the API based on the provided variables and manages the response it receives
+     * @return Returns an API response, null if there is a problem with the connection
+     */
     public String getResponse(){
         String apiRequest = URL_PREFIX+String.join("&",getLat(), getLon(), getExcluded(), getUnits(), getKey());
         try {

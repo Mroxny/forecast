@@ -40,6 +40,9 @@ public class ForecastParser {
 
     }
 
+    /**
+     * Prints the downloaded data depending on the type
+     */
     public void printForecast(){
         switch (fType){
             case TYPE_DAILY:
@@ -54,6 +57,15 @@ public class ForecastParser {
         }
     }
 
+    /**
+     * Reads a JSON object and creates a Day object that contains:
+     * date,
+     * minimum temperature,
+     * maximum temperature,
+     * average temperature for the whole day,
+     * probability of precipitation (%).
+     * @return Returns a list of Day objects
+     */
     public List<Day> getForecastDaily(){
         List<Day> list = new ArrayList<Day>();
         JSONArray jArray = (JSONArray) jObject.get("daily");
@@ -81,6 +93,13 @@ public class ForecastParser {
         return list;
     }
 
+    /**
+     * Reads a JSON object and creates an Hour Object that contains:
+     * date,
+     * temperature,
+     * precipitation volume
+     * @return Returns a list of Hour objects
+     */
     public List<Hour> getForecastHourly(){
         List<Hour> list = new ArrayList<Hour>();
         JSONArray jArray = (JSONArray) jObject.get("hourly");
@@ -98,6 +117,12 @@ public class ForecastParser {
         return list;
     }
 
+    /**
+     * Changes a series of numbers to a "human-readable" date based on date pattern
+     * @param timeStamp series of numbers
+     * @param pattern Pattern for what the date should look like
+     * @return Returns date in String
+     */
     public static String parseDate(long timeStamp, String pattern){
         java.util.Date date = new java.util.Date((long)timeStamp*1000);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

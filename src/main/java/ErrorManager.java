@@ -3,6 +3,11 @@ import java.nio.file.Paths;
 
 public class ErrorManager {
 
+    /**
+     * Checks for errors in the given arguments
+     * @param args arguments from the CMD
+     * @return returns true if any argument is invalid
+     */
     public static boolean haveErrors(String[] args){
         if(args.length > 4){
             Main.printError("Too many arguments");
