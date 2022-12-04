@@ -7,7 +7,7 @@ public class Main {
 
         APIManager apiManager = new APIManager("5e25fd264a5455963a0f0ee4f0a6d43e",33.44, 94.04, "hourly");
         String response = apiManager.getResponse();
-        JSONObject mainObject = apiManager.getJSONFromString(response);
+        JSONObject mainObject = APIManager.getJSONFromString(response);
 
 
 

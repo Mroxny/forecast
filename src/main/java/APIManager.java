@@ -56,7 +56,7 @@ public class APIManager {
         return "exclude="+String.join(",",typesToExclude);
     }
 
-    public JSONObject getJSONFromString(String data){
+    public static JSONObject getJSONFromString(String data){
         try{
             JSONParser parser = new JSONParser();
             Object parsedObject = parser.parse(data);
