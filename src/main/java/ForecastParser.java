@@ -109,10 +109,9 @@ public class ForecastParser {
             String date = parseDate((Long) object.get("dt"), "dd.MM.yyyy HH:mm");
 
            Number temp = (Number) object.get("temp");
-           Number pop = (Number) object.get("pop");
-           pop= pop.floatValue() * 100;
+           Number rain = (Number) object.get("rain");
 
-           list.add(new Hour(date, temp.floatValue(), pop.floatValue()));
+           list.add(new Hour(date, temp.floatValue(), rain.floatValue()));
         }
         return list;
     }
