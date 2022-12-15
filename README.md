@@ -27,7 +27,3 @@ The application must be supplied with 4 arguments.
 
 Example run:
 `java -jar forecast.jar [API key] config.txt hourly Warsaw`
-
-Summary
-----
-The forecast application was created as a recruitment task for the "Tink" company by Maciej Mrozek.
